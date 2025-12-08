@@ -1,0 +1,22 @@
+[Unit]
+Description=UA2-125 AI Chatbot Service
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/ua2125-chat
+Environment="PATH=/home/ubuntu/ua2125-chat/venv/bin"
+EnvironmentFile=/home/ubuntu/ua2125-chat/.env
+ExecStart=/home/ubuntu/ua2125-chat/venv/bin/gunicorn backend.app:app \
+    --workers 2 \
+    --worker-class uvicorn.workers.UvicornWorker \
+    --bind 127.0.0.1:8000 \
+    --access-logfile /var/log/ua2125-chatbot/access.log \
+    --error-logfile /var/log/ua2125-chatbot/error.log \
+    --timeout 120
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
