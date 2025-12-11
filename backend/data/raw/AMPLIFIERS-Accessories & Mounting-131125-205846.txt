@@ -1,0 +1,58 @@
+# Extracted from: AMPLIFIERS-Accessories & Mounting-131125-205846.pdf
+
+
+
+--- Page 1 ---
+
+```
+Accessories & Mounting
+Mounting Brackets (included)
+To include 2x mounting brackets.
+Wall-bracket_20240802.pdf
+
+• Aluminum 1.6mm thick
+• Black hard anodizing to match amplifier chassis
+• 4x M3 nut inserts per bracket
+• M3 x 5mm screws, black oxide finish, pre-installed
+```
+
+
+--- Page 2 ---
+
+```
+T-slot mounting
+
+The chassis of the Utility Amplifiers (ARC/NARC) have integrated T-slots that conform to the 20-series industry standard.
+
+These slots allow the installation of T-nuts and various other fasteners and accessories that are compatible with the 20-series system. This creates a very versatile system for mounting the amplifier or for attaching accessories.
+
+Cross Section Dimensions
+(in mm)
+          20
+        ______
+       |      |
+  12   |      |
+       |______|
+          6
+      4.2 dia.
+          6
+          8
+          4
+          2
+        0.4 R
+```
+
+
+--- Page 3 ---
+
+Accessories can include multiple types of T-nuts, T-studs, wire management, right angle adapters, and much more!
+
+**Accessories**
+
+Example wire management accessories from 8020.net
+
+8020.net can be a good resource, but there are many other sources of compatible parts & accessories.
+
+**3rd party**
+
+https://intuitiveusa.com/component-mounts-2/

@@ -1,0 +1,123 @@
+# Extracted from: UA 2-125 – Sonance Site.pdf
+
+
+
+--- Page 1 ---
+
+```
+SONANCE
+UA Series Amplifiers
+UA 2-125
+
+UA 2-125 is an ultra-compact 2-channel DSP amplifier delivering 125W per channel (250W in bridged Power Sharing Mode). Featuring analog and digital inputs, local zone audio, flexible mounting with a T-slot chassis, and easy setup with SonARC for UA Series Amplifiers app, it's designed for performance and versatility in any space.
+```
+
+
+--- Page 2 ---
+
+```
+SONANCE
+
+KEY FEATURES
+- 2 Channel - 125wpc 8Ω|4Ω - Power Share in 4Ω to 250w
+- Analog (RCA) and Digital (optical/coax) Inputs
+- Analog (RCA) outputs with volume tracking
+- Fully capable DSP
+- Bluetooth-enabled app for setup
+- Integrated Heatsink/Chassis with industry standard T-Slot Mounting
+- Audio Sense and IR Control (with learning capability)
+- Ultra-compact (5.25" x 1.875" x 7.825") designed for install in structured wiring can, TV back box, or outdoor enclosure
+
+SPECIFICATIONS
+SKU | Color
+93550 (US), 93551 (INT)
+
+Dimensions No Feet (WxHxD)
+5.35" x 1.77" x 8.19" (135.89mm x 44.96mm x 208.03mm)
+
+Mounting Bracket
+2 x Surface Mounting Brackets (included), 20mm Series Industry Standard T-slots, Built into Chassis Design, Seismic Tether Mounting Hole
+
+Inputs
+Analog RCA, COAX S/PDI Format, 2ch PCM, Optical TOSLINK S/PDI Format, 2ch PCM
+
+COPY ALL SPECS
+
+DIMENSIONAL DRAWINGS
+```
+
+
+--- Page 3 ---
+
+```
+SONANCE
+
+82" (208mm)
+UA 2-125 Front View
+
+82" (208mm)
+UA 2-125 Back View
+
+RELATED PRODUCTS
+
+UA SERIES ACCESSORY KIT
+SKU: 93759
+
+MORE
+
+DOWNLOADS
+
+SALES & DATA SHEETS
+INSTRUCTIONS
+```
+
+
+--- Page 4 ---
+
+```
+SONANCE
+
+UA2-125_UA2-125ARC_SONANCE_Sell_Sheet.pdf
+
+DRAWINGS & IMAGES
+93550_UA_2-125_Front_CAD.pdf
+93550_UA_2-125_Back_CAD.pdf
+
+DOWNLOAD ALL
+SHARE ALL
+
+LEARN MORE
+NAME
+MESSAGE
+
+EMAIL
+
+STATE / PROVINCE
+
+COUNTRY
+
+SUBMIT
+
+Life is Better with Music
+```
+
+
+--- Page 5 ---
+
+```
+SIGN UP FOR EMAIL
+
+EMAIL
+Subscribe
+
+CONTACT US
+CAREERS
+VIDEO RESOURCES
+SPOTLIGHTS
+SONANCE STUDIO360
+SONANCE TECHNICAL RESOURCES
+JAMES TECHNICAL RESOURCES
+YOUR PRIVACY CHOICES
+
+© 2025  |  Sonance  |  Privacy Policy  |  Terms of Use  |  Resellers Policy  |  Patents  |  All Rights Reserved
+```

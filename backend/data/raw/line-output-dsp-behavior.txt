@@ -1,0 +1,74 @@
+Line Output DSP Behavior - UA2-125
+
+## Overview
+The Line Output (Analog RCA outputs) on the UA2-125 amplifier is essentially a passthrough with selective DSP processing applied.
+
+## DSP Features Applied to Line Output
+
+The Line Output receives the following DSP processing:
+
+1. **Volume Tracking**
+   - The line output volume follows the main amplifier volume control
+   - Can be enabled/disabled in SonArc app settings
+   - Allows synchronized volume control for external subwoofers or additional amplifiers
+
+2. **LPF/Infrasonic Filters**
+   - Low-pass filtering (when configured)
+   - Infrasonic filtering to protect speakers from subsonic frequencies
+   - Configurable in SonArc app
+
+3. **Phase Shifts**
+   - Phase adjustment/inversion if configured
+   - Used for speaker alignment and subwoofer integration
+
+4. **Delay Shifts**
+   - Time delay/alignment if configured
+   - Helps synchronize audio across multiple zones or speakers
+
+## Important: Amplifier EQ NOT Applied
+
+**Critical Note:** The Amplifier EQ (speaker equalization curves) is NOT applied to the Line Output.
+
+- The Line Output provides a "clean" signal with only the DSP features listed above
+- Speaker-specific EQ tuning (bass boost, treble adjustment, room correction) only affects the main amplifier outputs
+- This ensures the line output can be used with external amplifiers that have their own EQ or with subwoofers that need full-range signal
+
+## Use Cases
+
+The Line Output is designed for:
+
+1. **Subwoofer Connection**
+   - Connect to powered subwoofer
+   - Volume tracking ensures subwoofer follows main volume
+   - LPF can be applied to create a proper subwoofer feed
+
+2. **External Amplifier**
+   - Drive additional zones or speakers
+   - Clean signal allows external amplifier to apply its own processing
+   - Phase and delay allow proper integration with main speakers
+
+3. **Recording/Monitoring**
+   - Clean output for recording purposes
+   - No speaker-specific coloration from amplifier EQ
+
+## Configuration in SonArc App
+
+To configure Line Output behavior:
+1. Open SonArc app
+2. Navigate to Outputs settings
+3. Enable/disable Volume Tracking
+4. Configure LPF frequency (if using subwoofer)
+5. Set phase and delay as needed for your setup
+
+## Technical Specifications
+
+- **Output Type:** Analog RCA
+- **Output Level:** Line level (2V typical)
+- **Impedance:** 10kΩ (suitable for line-level inputs)
+- **Volume Tracking:** Configurable (0 to -80dB following main volume)
+
+## Summary
+
+The Line Output = Passthrough + Selective DSP (volume tracking, filters, phase, delay) - Amplifier EQ
+
+This design provides flexibility for system integration while maintaining signal integrity for downstream processing.

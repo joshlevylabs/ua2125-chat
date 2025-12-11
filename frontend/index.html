@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UA2-125 AI Assistant | Sonance Support</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <button class="new-chat-btn" id="newChatBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    New Chat
+                </button>
+                <button class="sidebar-toggle" id="sidebarToggle" title="Toggle sidebar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="9" y1="3" x2="9" y2="21"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Search Box -->
+            <div class="search-container">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search conversations..." class="search-input">
+                <button class="search-clear" id="searchClear" style="display: none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Search Results -->
+            <div class="search-results" id="searchResults" style="display: none;">
+                <div class="search-results-header">
+                    <span>Search Results</span>
+                    <button class="close-search" id="closeSearch">Back to chats</button>
+                </div>
+                <div class="search-results-list" id="searchResultsList"></div>
+            </div>
+
+            <!-- Conversation List -->
+            <div class="conversations-list" id="conversationsList">
+                <div class="conversations-section">
+                    <div class="section-label">Recent</div>
+                    <div id="recentConversations"></div>
+                </div>
+            </div>
+
+            <!-- Sidebar Footer -->
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <span class="user-name" id="userName">User</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <div class="chat-header">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <div class="header-content">
+                    <h1 id="chatTitle">UA2-125 AI Assistant</h1>
+                    <p class="subtitle">Powered by Sonance AI Support Platform</p>
+                </div>
+                <div class="header-actions">
+                    <div class="status-indicator" id="statusIndicator">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Ready</span>
+                    </div>
+                    <button class="rename-btn" id="renameBtn" title="Rename conversation" style="display: none;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Messages Container -->
+            <div class="messages-container" id="messagesContainer">
+                <!-- Welcome Message (shown for new chats) -->
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-logo">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <h2>Welcome to UA2-125 AI Assistant</h2>
+                    <p class="welcome-subtitle">I'm here to help with your Sonance UA2-125 amplifier questions</p>
+                    <div class="quick-prompts">
+                        <button class="quick-prompt" data-prompt="What's the power output at 4 ohms?">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                            Power specifications
+                        </button>
+                        <button class="quick-prompt" data-prompt="How do I connect a TV using HDMI ARC?">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+                                <polyline points="17 2 12 7 7 2"></polyline>
+                            </svg>
+                            HDMI ARC setup
+                        </button>
+                        <button class="quick-prompt" data-prompt="Why is my amplifier going into protection mode?">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
+                            Troubleshooting
+                        </button>
+                        <button class="quick-prompt" data-prompt="What are the speaker wiring options?">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            Wiring guide
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Messages will be inserted here -->
+                <div id="messagesArea"></div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea
+                        id="messageInput"
+                        placeholder="Ask about the UA2-125 amplifier..."
+                        rows="1"
+                    ></textarea>
+                    <button id="sendButton" class="send-button" title="Send message">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+                <div class="input-hint">
+                    Press Enter to send, Shift+Enter for new line
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Rename Modal -->
+    <div class="modal-overlay" id="renameModal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Rename Conversation</h3>
+                <button class="modal-close" id="closeRenameModal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="renameInput" class="modal-input" placeholder="Enter new name...">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelRename">Cancel</button>
+                <button class="btn btn-primary" id="confirmRename">Rename</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // =============================================================================
+        // CONFIGURATION
+        // =============================================================================
+        const API_BASE_URL = window.location.origin;
+
+        // Get user ID from URL params, localStorage, or generate new one
+        function getUserId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let userId = urlParams.get('user_id') || localStorage.getItem('ua2125_user_id');
+            if (!userId) {
+                userId = 'user_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('ua2125_user_id', userId);
+            }
+            return userId;
+        }
+
+        // =============================================================================
+        // STATE
+        // =============================================================================
+        const state = {
+            userId: getUserId(),
+            currentConversationId: null,
+            conversations: [],
+            isProcessing: false,
+            searchMode: false
+        };
+
+        // =============================================================================
+        // DOM ELEMENTS
+        // =============================================================================
+        const elements = {
+            sidebar: document.getElementById('sidebar'),
+            sidebarToggle: document.getElementById('sidebarToggle'),
+            mobileMenuBtn: document.getElementById('mobileMenuBtn'),
+            newChatBtn: document.getElementById('newChatBtn'),
+            searchInput: document.getElementById('searchInput'),
+            searchClear: document.getElementById('searchClear'),
+            searchResults: document.getElementById('searchResults'),
+            searchResultsList: document.getElementById('searchResultsList'),
+            closeSearch: document.getElementById('closeSearch'),
+            conversationsList: document.getElementById('conversationsList'),
+            recentConversations: document.getElementById('recentConversations'),
+            messagesContainer: document.getElementById('messagesContainer'),
+            messagesArea: document.getElementById('messagesArea'),
+            welcomeScreen: document.getElementById('welcomeScreen'),
+            messageInput: document.getElementById('messageInput'),
+            sendButton: document.getElementById('sendButton'),
+            statusIndicator: document.getElementById('statusIndicator'),
+            chatTitle: document.getElementById('chatTitle'),
+            renameBtn: document.getElementById('renameBtn'),
+            renameModal: document.getElementById('renameModal'),
+            renameInput: document.getElementById('renameInput'),
+            closeRenameModal: document.getElementById('closeRenameModal'),
+            cancelRename: document.getElementById('cancelRename'),
+            confirmRename: document.getElementById('confirmRename'),
+            userAvatar: document.getElementById('userAvatar'),
+            userName: document.getElementById('userName')
+        };
+
+        // =============================================================================
+        // UTILITY FUNCTIONS
+        // =============================================================================
+        function setStatus(status, text) {
+            const dot = elements.statusIndicator.querySelector('.status-dot');
+            const textEl = elements.statusIndicator.querySelector('.status-text');
+            dot.className = 'status-dot ' + status;
+            textEl.textContent = text;
+        }
+
+        function formatTimestamp(timestamp) {
+            const date = new Date(timestamp);
+            const now = new Date();
+            const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+
+            if (diffDays === 0) {
+                return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            } else if (diffDays === 1) {
+                return 'Yesterday';
+            } else if (diffDays < 7) {
+                return date.toLocaleDateString([], { weekday: 'short' });
+            } else {
+                return date.toLocaleDateString([], { month: 'short', day: 'numeric' });
+            }
+        }
+
+        function formatMessage(text) {
+            let formatted = text
+                .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+                .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+                .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                .replace(/`(.+?)`/g, '<code>$1</code>');
+
+            const lines = formatted.split('\n');
+            let inList = false;
+            let listType = null;
+            const processedLines = [];
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                const bulletMatch = line.match(/^[•\-\*] (.+)$/);
+                const numberMatch = line.match(/^(\d+)\. (.+)$/);
+
+                if (bulletMatch) {
+                    if (!inList || listType !== 'ul') {
+                        if (inList) processedLines.push(`</${listType}>`);
+                        processedLines.push('<ul>');
+                        inList = true;
+                        listType = 'ul';
+                    }
+                    processedLines.push(`<li>${bulletMatch[1]}</li>`);
+                } else if (numberMatch) {
+                    if (!inList || listType !== 'ol') {
+                        if (inList) processedLines.push(`</${listType}>`);
+                        processedLines.push('<ol>');
+                        inList = true;
+                        listType = 'ol';
+                    }
+                    processedLines.push(`<li>${numberMatch[2]}</li>`);
+                } else {
+                    if (inList) {
+                        processedLines.push(`</${listType}>`);
+                        inList = false;
+                        listType = null;
+                    }
+                    if (line.trim() && !line.match(/^<h[123]>/)) {
+                        processedLines.push(line + '<br>');
+                    } else {
+                        processedLines.push(line);
+                    }
+                }
+            }
+
+            if (inList) {
+                processedLines.push(`</${listType}>`);
+            }
+
+            return processedLines.join('\n');
+        }
+
+        // =============================================================================
+        // API FUNCTIONS
+        // =============================================================================
+        async function fetchConversations() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/conversations?user_id=${state.userId}`);
+                if (!response.ok) throw new Error('Failed to fetch conversations');
+                const data = await response.json();
+                state.conversations = data.conversations;
+                renderConversationsList();
+            } catch (error) {
+                console.error('Error fetching conversations:', error);
+            }
+        }
+
+        async function createConversation() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/conversations`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        user_id: state.userId,
+                        platform: 'sonance-beta'
+                    })
+                });
+                if (!response.ok) throw new Error('Failed to create conversation');
+                const conversation = await response.json();
+                state.conversations.unshift(conversation);
+                renderConversationsList();
+                return conversation;
+            } catch (error) {
+                console.error('Error creating conversation:', error);
+                return null;
+            }
+        }
+
+        async function loadConversation(conversationId) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/conversations/${conversationId}`);
+                if (!response.ok) throw new Error('Failed to load conversation');
+                const conversation = await response.json();
+
+                state.currentConversationId = conversationId;
+                elements.chatTitle.textContent = conversation.title || 'UA2-125 AI Assistant';
+                elements.renameBtn.style.display = 'block';
+                elements.welcomeScreen.style.display = 'none';
+                elements.messagesArea.innerHTML = '';
+
+                conversation.messages.forEach(msg => {
+                    addMessageToUI(msg.content, msg.role === 'user', msg.sources);
+                });
+
+                updateActiveConversation();
+                elements.messagesContainer.scrollTop = elements.messagesContainer.scrollHeight;
+            } catch (error) {
+                console.error('Error loading conversation:', error);
+            }
+        }
+
+        async function deleteConversation(conversationId) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/conversations/${conversationId}`, {
+                    method: 'DELETE'
+                });
+                if (!response.ok) throw new Error('Failed to delete conversation');
+
+                state.conversations = state.conversations.filter(c => c.id !== conversationId);
+                renderConversationsList();
+
+                if (state.currentConversationId === conversationId) {
+                    startNewChat();
+                }
+            } catch (error) {
+                console.error('Error deleting conversation:', error);
+            }
+        }
+
+        async function renameConversation(conversationId, newTitle) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/conversations/${conversationId}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ title: newTitle })
+                });
+                if (!response.ok) throw new Error('Failed to rename conversation');
+                const updated = await response.json();
+
+                const conv = state.conversations.find(c => c.id === conversationId);
+                if (conv) conv.title = updated.title;
+                renderConversationsList();
+
+                if (state.currentConversationId === conversationId) {
+                    elements.chatTitle.textContent = updated.title;
+                }
+            } catch (error) {
+                console.error('Error renaming conversation:', error);
+            }
+        }
+
+        async function searchConversations(query) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/conversations/search?user_id=${state.userId}&q=${encodeURIComponent(query)}`);
+                if (!response.ok) throw new Error('Failed to search');
+                const data = await response.json();
+                return data.results;
+            } catch (error) {
+                console.error('Error searching:', error);
+                return [];
+            }
+        }
+
+        async function sendChatMessage(message) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/chat/v2`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: message,
+                        user_id: state.userId,
+                        conversation_id: state.currentConversationId
+                    })
+                });
+
+                if (!response.ok) throw new Error('Failed to send message');
+                return await response.json();
+            } catch (error) {
+                console.error('Error sending message:', error);
+                throw error;
+            }
+        }
+
+        // =============================================================================
+        // UI FUNCTIONS
+        // =============================================================================
+        function renderConversationsList() {
+            elements.recentConversations.innerHTML = '';
+
+            if (state.conversations.length === 0) {
+                elements.recentConversations.innerHTML = `
+                    <div class="empty-state">
+                        <p>No conversations yet</p>
+                        <p class="empty-hint">Start a new chat to begin</p>
+                    </div>
+                `;
+                return;
+            }
+
+            state.conversations.forEach(conv => {
+                const item = document.createElement('div');
+                item.className = 'conversation-item' + (conv.id === state.currentConversationId ? ' active' : '');
+                item.dataset.id = conv.id;
+
+                item.innerHTML = `
+                    <div class="conversation-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="conversation-info">
+                        <div class="conversation-title">${conv.title || 'New Conversation'}</div>
+                        <div class="conversation-preview">${conv.last_message ? conv.last_message.substring(0, 40) + '...' : 'No messages'}</div>
+                    </div>
+                    <div class="conversation-actions">
+                        <button class="action-btn delete-btn" title="Delete">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                        </button>
+                    </div>
+                `;
+
+                item.addEventListener('click', (e) => {
+                    if (!e.target.closest('.action-btn')) {
+                        loadConversation(conv.id);
+                        if (window.innerWidth < 768) {
+                            elements.sidebar.classList.remove('open');
+                        }
+                    }
+                });
+
+                item.querySelector('.delete-btn').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (confirm('Delete this conversation?')) {
+                        deleteConversation(conv.id);
+                    }
+                });
+
+                elements.recentConversations.appendChild(item);
+            });
+        }
+
+        function updateActiveConversation() {
+            document.querySelectorAll('.conversation-item').forEach(item => {
+                item.classList.toggle('active', item.dataset.id === state.currentConversationId);
+            });
+        }
+
+        function addMessageToUI(content, isUser = false, sources = null) {
+            elements.welcomeScreen.style.display = 'none';
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'assistant-message'}`;
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            contentDiv.innerHTML = formatMessage(content);
+
+            messageDiv.appendChild(contentDiv);
+            elements.messagesArea.appendChild(messageDiv);
+            elements.messagesContainer.scrollTop = elements.messagesContainer.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message assistant-message typing-indicator';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="message-content">
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            `;
+            elements.messagesArea.appendChild(typingDiv);
+            elements.messagesContainer.scrollTop = elements.messagesContainer.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const typing = document.getElementById('typingIndicator');
+            if (typing) typing.remove();
+        }
+
+        function startNewChat() {
+            state.currentConversationId = null;
+            elements.chatTitle.textContent = 'UA2-125 AI Assistant';
+            elements.renameBtn.style.display = 'none';
+            elements.welcomeScreen.style.display = 'flex';
+            elements.messagesArea.innerHTML = '';
+            updateActiveConversation();
+        }
+
+        function renderSearchResults(results) {
+            elements.searchResultsList.innerHTML = '';
+
+            if (results.length === 0) {
+                elements.searchResultsList.innerHTML = `
+                    <div class="empty-state">
+                        <p>No results found</p>
+                    </div>
+                `;
+                return;
+            }
+
+            results.forEach(result => {
+                const item = document.createElement('div');
+                item.className = 'search-result-item';
+                item.innerHTML = `
+                    <div class="search-result-title">${result.conversation_title}</div>
+                    <div class="search-result-content">${result.highlight}</div>
+                    <div class="search-result-meta">${result.message_role} • ${formatTimestamp(result.message_timestamp)}</div>
+                `;
+                item.addEventListener('click', () => {
+                    loadConversation(result.conversation_id);
+                    exitSearchMode();
+                    if (window.innerWidth < 768) {
+                        elements.sidebar.classList.remove('open');
+                    }
+                });
+                elements.searchResultsList.appendChild(item);
+            });
+        }
+
+        function enterSearchMode() {
+            state.searchMode = true;
+            elements.searchResults.style.display = 'block';
+            elements.conversationsList.style.display = 'none';
+            elements.searchClear.style.display = 'block';
+        }
+
+        function exitSearchMode() {
+            state.searchMode = false;
+            elements.searchResults.style.display = 'none';
+            elements.conversationsList.style.display = 'block';
+            elements.searchInput.value = '';
+            elements.searchClear.style.display = 'none';
+        }
+
+        // =============================================================================
+        // EVENT HANDLERS
+        // =============================================================================
+        async function handleSendMessage() {
+            const message = elements.messageInput.value.trim();
+            if (!message || state.isProcessing) return;
+
+            elements.messageInput.value = '';
+            elements.messageInput.style.height = 'auto';
+
+            state.isProcessing = true;
+            elements.sendButton.disabled = true;
+            elements.messageInput.disabled = true;
+            setStatus('processing', 'Thinking...');
+
+            addMessageToUI(message, true);
+            showTypingIndicator();
+
+            try {
+                const response = await sendChatMessage(message);
+
+                removeTypingIndicator();
+                addMessageToUI(response.response, false, response.sources);
+
+                // Update conversation ID and refresh list
+                if (!state.currentConversationId) {
+                    state.currentConversationId = response.conversation_id;
+                    elements.renameBtn.style.display = 'block';
+                }
+
+                await fetchConversations();
+                updateActiveConversation();
+                setStatus('ready', 'Ready');
+
+            } catch (error) {
+                removeTypingIndicator();
+                addMessageToUI('I apologize, but I encountered an error. Please try again.', false);
+                setStatus('error', 'Error');
+            } finally {
+                state.isProcessing = false;
+                elements.sendButton.disabled = false;
+                elements.messageInput.disabled = false;
+                elements.messageInput.focus();
+            }
+        }
+
+        // Search debounce
+        let searchTimeout;
+        elements.searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            const query = e.target.value.trim();
+
+            if (query.length < 2) {
+                if (state.searchMode) exitSearchMode();
+                return;
+            }
+
+            searchTimeout = setTimeout(async () => {
+                enterSearchMode();
+                const results = await searchConversations(query);
+                renderSearchResults(results);
+            }, 300);
+        });
+
+        elements.searchClear.addEventListener('click', exitSearchMode);
+        elements.closeSearch.addEventListener('click', exitSearchMode);
+
+        // Message input
+        elements.messageInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 150) + 'px';
+        });
+
+        elements.messageInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleSendMessage();
+            }
+        });
+
+        elements.sendButton.addEventListener('click', handleSendMessage);
+
+        // New chat
+        elements.newChatBtn.addEventListener('click', () => {
+            startNewChat();
+            if (window.innerWidth < 768) {
+                elements.sidebar.classList.remove('open');
+            }
+        });
+
+        // Sidebar toggle
+        elements.sidebarToggle.addEventListener('click', () => {
+            elements.sidebar.classList.toggle('collapsed');
+        });
+
+        elements.mobileMenuBtn.addEventListener('click', () => {
+            elements.sidebar.classList.toggle('open');
+        });
+
+        // Rename modal
+        elements.renameBtn.addEventListener('click', () => {
+            elements.renameInput.value = elements.chatTitle.textContent;
+            elements.renameModal.style.display = 'flex';
+            elements.renameInput.focus();
+            elements.renameInput.select();
+        });
+
+        elements.closeRenameModal.addEventListener('click', () => {
+            elements.renameModal.style.display = 'none';
+        });
+
+        elements.cancelRename.addEventListener('click', () => {
+            elements.renameModal.style.display = 'none';
+        });
+
+        elements.confirmRename.addEventListener('click', async () => {
+            const newTitle = elements.renameInput.value.trim();
+            if (newTitle && state.currentConversationId) {
+                await renameConversation(state.currentConversationId, newTitle);
+                elements.renameModal.style.display = 'none';
+            }
+        });
+
+        elements.renameInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                elements.confirmRename.click();
+            } else if (e.key === 'Escape') {
+                elements.renameModal.style.display = 'none';
+            }
+        });
+
+        // Quick prompts
+        document.querySelectorAll('.quick-prompt').forEach(btn => {
+            btn.addEventListener('click', () => {
+                elements.messageInput.value = btn.dataset.prompt;
+                handleSendMessage();
+            });
+        });
+
+        // Close modal on overlay click
+        elements.renameModal.addEventListener('click', (e) => {
+            if (e.target === elements.renameModal) {
+                elements.renameModal.style.display = 'none';
+            }
+        });
+
+        // =============================================================================
+        // INITIALIZATION
+        // =============================================================================
+        async function init() {
+            // Set user info
+            elements.userAvatar.textContent = state.userId.charAt(0).toUpperCase();
+            elements.userName.textContent = state.userId;
+
+            // Check health
+            try {
+                const response = await fetch(`${API_BASE_URL}/health`);
+                const data = await response.json();
+                if (data.status === 'healthy') {
+                    setStatus('ready', 'Ready');
+                } else {
+                    setStatus('error', 'Knowledge base not loaded');
+                }
+            } catch (error) {
+                setStatus('error', 'Connection error');
+            }
+
+            // Load conversations
+            await fetchConversations();
+
+            // Focus input
+            elements.messageInput.focus();
+        }
+
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>

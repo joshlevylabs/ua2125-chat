@@ -1,0 +1,51 @@
+# Extracted from: sell-sheet.pdf
+
+
+
+--- Page 1 ---
+
+```
+SONANCE
+UA LOCAL ZONE AMPLIFIERS
+UA 2-125 | UA 2-125 ARC
+
+Sonance UA amplifiers provide robust DSP amplification in an ultra-compact form factor to support a wide range of applications. UA amps are designed for local zone applications like bedroom and TV music, outdoor entertainment, or any two-channel location that may have space limitations. Their unique T-slot heatsink chassis allows for flexible installation into the TV back box, structured wiring can, or the Atelix type outdoor enclosure. Select from the standard or ARC model, each with fully capable DSP and Bluetooth-enabled app setup.
+```
+
+
+--- Page 2 ---
+
+```
+FEATURES AND BENEFITS
+
+UA 2-125
+• 2 Channel - 125wpc 8Ω/4Ω - Power Share in 4Ω to 250w
+• Analog (RCA) and Digital (optical/coax) Inputs
+• Analog (RCA) outputs with volume tracking
+• Fully capable DSP
+• Bluetooth-enabled app for setup
+• Integrated Heatsink/Chassis with industry standard T-Slot Mounting
+• Audio Sense and IR Control (with learning capability)
+• Ultra-compact (5.25” x 1.875” x 8.25”) designed for install in structured wiring can, TV back box, or outdoor enclosure
+
+UA 2-125 ARC
+• 2 Channel - 125wpc 8Ω/4Ω - Power Share in 4Ω to 250w
+• HDMI eARC/CEC and Analog (RCA) Inputs
+• Analog (RCA) outputs with volume tracking and DSP
+• Supports 2 channel PCM
+• Fully capable DSP
+• Bluetooth-enabled app for setup
+• Integrated Heatsink/Chassis with industry standard T-Slot Mounting
+• HDMI CEC, Audio Sense and IR Control (with learning capability)
+• Ultra-compact (5.25” x 1.875” x 8.25”) designed for install in structured wiring can, TV back box, or outdoor enclosure
+• Supports up to 24bit/96kHz digital input signals
+
+UA 2-125
+SKU 93550
+
+UA 2-125 ARC
+SKU 93548
+
+©2025 Sonance. All rights reserved. Sonance is a registered trademark of Dana Innovations. Due to continuous product improvement, all features and specifications are subject to change without notice. For the latest Sonance product specification information visit: www.sonance.com
+991 Calle Amanecer • San Clemente, CA 92673 USA • (949) 492-7777 • FAX: (949) 361-5151 • Technical Support: (949) 492-7777 01.29.2025
+```

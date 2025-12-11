@@ -1,0 +1,62 @@
+# UA2-125 AI Chatbot - Docker Compose Configuration
+# For local development and testing
+
+version: '3.8'
+
+services:
+  # PostgreSQL with pgvector
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: ua2125-postgres
+    environment:
+      POSTGRES_DB: ua2125_chatbot
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres123}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./backend/schema_v2.sql:/docker-entrypoint-initdb.d/02-schema-v2.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ua2125-network
+
+  # UA2-125 Chatbot Application
+  chatbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ua2125-chatbot
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - DATABASE_URL=postgresql://postgres:${DB_PASSWORD:-postgres123}@postgres:5432/ua2125_chatbot
+      - HOST=0.0.0.0
+      - PORT=8000
+      - LOG_LEVEL=INFO
+      - CORS_ORIGINS=*
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+    networks:
+      - ua2125-network
+
+volumes:
+  postgres_data:
+
+networks:
+  ua2125-network:
+    driver: bridge

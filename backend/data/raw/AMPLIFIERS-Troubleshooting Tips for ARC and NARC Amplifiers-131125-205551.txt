@@ -1,0 +1,103 @@
+# Extracted from: AMPLIFIERS-Troubleshooting Tips for ARC and NARC Amplifiers-131125-205551.pdf
+
+
+
+--- Page 1 ---
+
+Troubleshooting Tips for ARC and NARC Amplifiers  
+Audio Issues  
+
+• No audio after waking TV from screen saver or long sleep/hibernate (e.g., Sony TVs):  
+  ◦ Confirm the amp is set up for HDMI as the input source and is not being overridden by an active Analog input signal  
+  ◦ Make sure the TV’s output format is 2ch PCM (not Pass Through).  
+  ◦ Reset the amp by powering it off and back on.  
+  ◦ Check HDMI connection: unplug and replug the cable at both ends.  
+  ◦ Manually de-select/re-select ARC as the output audio device in the TV menu.  
+  ◦ Check if the HDMI cable is HDMI 2.1 compliant  
+  ◦ Update to the latest firmware.  
+
+• No HDMI audio output after extended use (e.g., over an hour):  
+  ◦ Reconnect the HDMI cable to restore the ARC connection.  
+  ◦ Turn off eARC in TV settings (try using ARC only)  
+
+• Analog source not adjusting volume:  
+  ◦ Go to the inputs settings page in the SonARC app and confirm "Volume Tracking" is enabled under Analog Source.  
+
+SonARC App Issues  
+
+• App not finding the amp after firmware update:  
+  ◦ Swipe down to refresh the app or restart Bluetooth on the phone.  
+  ◦ Press the blue SETUP button on the amp's front panel to reconnect.  
+
+• App not letting users into the settings page:  
+  ◦ Move closer to the amp to strengthen the Bluetooth connection.  
+  ◦ Make sure the antenna window on the amplifier is not blocked by wires or other obstructions  
+  ◦ Make sure other devices with transmitters in the 2.4GHz band (WiFi, Bluetooth, Zigbee, Thread, etc.) are at least 1 foot away from the antenna window.  
+
+HDMI Connection Issues  
+
+• TV not recognizing the amp on startup and/or connection lost:  
+  ◦ Make sure the TV’s output format is 2ch PCM (not Pass Through).  
+
+
+--- Page 2 ---
+
+- Reset the amp by powering it off and back on.
+- Check HDMI connection: unplug and replug the cable at both ends.
+- Check if the HDMI cable is HDMI 2.1 compliant.
+- Manually de-select/re-select ARC as the output audio device in the TV menu.
+- Update to the latest firmware.
+- Turn off eARC in TV settings (try using ARC only).
+- If the issue persists, open the SonARC app to wake the amp, then check if the TV switches to ARC output.
+
+Remote Control Issues
+• TV remote not controlling the amp:
+  - (ARC only) NOTE: Normally, the remote control commands are sent over HDMI CEC and there is no need for using the IR receiver. If IR receiver cable is plugged in, it will override the HDMI CEC commands. The TV remote will not work if the IR receiver is plugged in and has not been programmed.
+  - (ARC only) If using HDMI ARC input, do not plug in the IR receiver cable unless there is a problem using HDMI CEC. Most TVs (nearly all) will work best if connected by the HDMI cable and CEC is enabled. Different TV manufacturers call CEC different things, so it may take some sleuthing in the TV settings to make sure CEC is enabled.
+  - If using the IR receiver:
+    - Check if the IR cable is connected to the amp and that the IR receiver is exposed and facing outward towards the remote control.
+    - Confirm the remote control is IR based. Many TVs are now using RF based remotes or hybrid RF/IR remotes.
+    - Make sure the remote control’s IR commands are programmed into the UA amplifier. Use the App to perform this programming.
+
+• Universal remote not working:
+  - Confirm the remote has IR capabilities; if not, it won’t work with the amp.
+
+Bluetooth Connection Issues
+• Difficulty connecting with multiple amps nearby:
+  - First, make sure there are not other sources of interference in the 2.4GHz RF band. These include devices with WiFi, Bluetooth, Zigbee/Thread, or microwave ovens. If possible, move the UA amplifier or the other sources of interference so that they are not near each other. Alternatively, turn off the interference sources.
+
+
+--- Page 3 ---
+
+- Unplug other UA amps temporarily, or turn off Bluetooth on other UA amps via the general settings page until connections stabilize. Then set up each amp individually. You can re-enable Bluetooth by pressing the “Setup” button on the amp.
+
+LED Issues
+
+• LED too bright, too dim, not lit  
+  ◦ check LED settings in the General page of the SonARC app
+
+• LED colors not reflecting amp state (e.g., purple LED stays on):  
+  ◦ Manually verify the state in the SonARC app (e.g., MUTE, MIX modes).  
+  ◦ Swap input selections (e.g., Default vs. Secondary) to see if it corrects.
+
+Amp is not going into standby
+
+• Check the Sleep Mode setting in the General page of the SonARC app  
+• Check if there is an active analog signal on analog input channel. Signals as small as 1 mVrms could keep the amplifier awake.  
+• Check for ground loops and/or other possible coupling points for signal into the analog channel.  
+• For S/PDIF (coax/optical), check if the source is still turned on. Some TVs will still output an audio signal on the SPDIF output even when the TV is turned off (standby).
+
+Input Settings Confusion
+
+• Default vs. Secondary source confusion:  
+  ◦ Explain that in Mute and Duck modes, the Secondary source always overrides the Default source. You can think of the Secondary source as being the ‘Priority Override’ source.  
+  ◦ In Mix mode, Default and Secondary sources have equal priority. Either one will keep the amplifier awake, but neither will override the other. They are mixed equally (at -3dB to prevent clipping).  
+  ◦ Refer to updated documentation if available.
+
+General Tips
+
+• Amp not waking from sleep (e.g., SPDIF on NARC):  
+  ◦ Ensure Auto-ON Mode is set correctly and test the source input.
+
+• Premature muting with low signal levels:  
+  ◦ Increase the source device’s volume (e.g., TV, cable box), then lower the amp volume in the app to avoid muting.

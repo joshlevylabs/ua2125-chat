@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(dir:*)",
+      "Bash(findstr:*)",
+      "Bash(tree:*)",
+      "Bash(pip install:*)",
+      "Bash(python ingest_docs.py:*)",
+      "Bash(python app.py:*)",
+      "Bash(curl:*)",
+      "Bash(python:*)",
+      "Bash(git checkout:*)",
+      "Bash(conda --version:*)",
+      "Bash(choco:*)",
+      "Bash(refreshenv)",
+      "Bash(head:*)",
+      "Bash(wc:*)",
+      "Bash(tasklist:*)",
+      "Bash(netstat:*)",
+      "Bash(taskkill:*)",
+      "Bash(timeout /t 3 /nobreak)",
+      "Bash(nul)",
+      "Bash(exit 0)",
+      "Bash(timeout /t 4 /nobreak)",
+      "Bash(timeout /t 2 /nobreak)",
+      "Bash(if exist __pycache__ rmdir /s /q __pycache__)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
